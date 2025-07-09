@@ -1,4 +1,5 @@
 using System.Globalization;
+using System.Text;
 using System.Xml.XPath;
 
 namespace Neetcode_Practice;
@@ -106,5 +107,50 @@ public class Solutions
             }
         }
         return result.ToArray();
+    }
+    
+    public string Encode(IList<string> strs)
+    {
+        StringBuilder encoded = new StringBuilder();
+        // string encodedString = "";
+        foreach (string str in strs)
+        {
+            int strLength = str.Length;
+            encoded.Append(strLength).Append("#").Append(str);
+            // encodedString += strLength + "#" + str;
+        }
+
+        return encoded.ToString();
+        // return encodedString;
+    }
+
+    public List<string> Decode(string s)
+    {
+        List<string> result = new List<string>();
+
+        int indexOfCharacterLength = 0;
+        int indexOfDelimiter = 0;
+        while (true)
+        {
+            indexOfDelimiter = s.IndexOf("#", indexOfCharacterLength);
+            if (indexOfDelimiter == -1) break;
+
+            string stringContainingCharacterLength = s.Substring(indexOfCharacterLength, indexOfDelimiter - indexOfCharacterLength);
+            // for (int i = startingIndexToIterate; i < indexOfDelimiter; i++)
+            // {
+            //     stringContainingCharacterLength += s[i];
+            // }
+
+            int characterLength = int.Parse(stringContainingCharacterLength);
+            string decodedString = s.Substring(indexOfCharacterLength + stringContainingCharacterLength.Length + 1, characterLength);
+            // for (int i = indexOfDelimiter + 1; i < indexOfCharacterLength + stringContainingCharacterLength.Length + 1 + characterLength; i++)
+            // {
+            //     decodedString += s[i];
+            // }
+            result.Add(decodedString);
+            indexOfCharacterLength += stringContainingCharacterLength.Length + 1 + characterLength;
+        }
+        
+        return result;
     }
 }
