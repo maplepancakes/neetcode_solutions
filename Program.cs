@@ -8,4 +8,5 @@ Solutions solutions = new Solutions();
 // solutions.TwoSum([2, 5, 6, 3, 1], 8);
 // solutions.GroupAnagrams(["act","pots","tops","cat","stop","hat"]);
 // solutions.TopKFrequent([1, 2, 2, 3, 3, 3], 2);
-solutions.Decode(solutions.Encode(new List<string> {"ex1stence", "@omaewa6^5", "re####1", "4556hello@"}));
+// solutions.Decode(solutions.Encode(new List<string> {"ex1stence", "@omaewa6^5", "re####1", "4556hello@"}));
+solutions.ProductExceptSelf([1, 2, 4, 6]);

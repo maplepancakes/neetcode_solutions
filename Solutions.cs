@@ -153,4 +153,82 @@ public class Solutions
         
         return result;
     }
+    
+    // Expected time complexity = O(n)
+    // Expected space complexity = O(n)
+    public int[] ProductExceptSelf(int[] nums)
+    {
+        /*
+        1st attempt: -
+        Actual time complexity = O(n*n) -> while loop, for loop
+        Actual space complexity = O(n)
+        
+        int[] result = new int[nums.Length];
+        int indexToNotIterateOn = 0;
+        
+        while (indexToNotIterateOn < nums.Length)
+        {
+            int productOfNums = 1;
+            for (int i = 0; i < nums.Length; i++)
+            {
+                if (i == indexToNotIterateOn) continue;
+                productOfNums *= nums[i];
+            }
+
+            result[indexToNotIterateOn] = productOfNums;
+            indexToNotIterateOn++;
+        }
+
+        return result;
+        */
+
+        // Attempt 2: -
+        // Actual time complexity = O(n)
+        // Actual space complexity = O(n)
+        // TODO: Can attempt 3 optimize space complexity to O(1) by just iterating through the output instead of having extra arrays for prefixes and suffixes?
+        int[] output = new int[nums.Length];
+        int[] productOfPrefixes = new int[nums.Length];
+        int[] productOfSuffixes = new int[nums.Length];
+
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (i == 0)
+            {
+                productOfPrefixes[i] = nums[i];
+                continue;
+            }
+
+            productOfPrefixes[i] = nums[i] * productOfPrefixes[i - 1];
+        }
+
+        for (int i = nums.Length - 1; i >= 0; i--)
+        {
+            if (i == nums.Length - 1)
+            {
+                productOfSuffixes[i] = nums[i];
+                continue;
+            }
+
+            productOfSuffixes[i] = nums[i] * productOfSuffixes[i + 1];
+        }
+
+        for (int i = 0; i < nums.Length; i++)
+        {
+            if (i == 0)
+            {
+                output[i] = productOfSuffixes[i + 1];
+                continue;
+            }
+
+            if (i == nums.Length - 1)
+            {
+                output[i] = productOfPrefixes[i - 1];
+                continue;
+            }
+
+            output[i] = productOfPrefixes[i - 1] * productOfSuffixes[i + 1];
+        }
+
+        return output;
+    }
 }
