@@ -293,4 +293,58 @@ public class ArraysAndHashing
         
         return true;
     }
+    
+    // Expected time complexity = O(n)
+    // Expected space complexity = O(n)
+    public int LongestConsecutive(int[] nums)
+    {
+        // Attempt 1: 
+        // Actual time complexity = worst case O(n log n) -> if values are not evenly distributed between buckets, best case O(n) -> if values are evenly distributed between buckets
+        // Actual space complexity = O(n)
+        // int numberOfInputElements = nums.Length;
+        // List<List<int>> buckets = new List<List<int>>();
+        // for (int i = 0; i < numberOfInputElements; i++) // number of buckets = number of input elements, best case scenario all elements of input[i] gets sorted into bucket of input[i]
+        // {
+        //     buckets.Add(new List<int>());
+        // }
+        //
+        // int smallestNum = nums.Min();
+        // int largestNum = nums.Max();
+        // for (int i = 0; i < numberOfInputElements; i++)
+        // {
+        //     // bucketIndex = (num - min) * k / (max - min + 1); for scaling values down between buckets[0] and buckets[k - 1] for even distribution
+        //     int bucketIndex = (nums[i] - smallestNum) * buckets.Count / (largestNum - smallestNum + 1);
+        //     buckets[bucketIndex].Add(nums[i]);
+        // }
+        //
+        // for (int i = 0; i < buckets.Count; i++)
+        // {
+        //     buckets[i].Sort(); // Smaller number of operations required compared to doing nums.Sort(), hence better time complexity
+        // }
+        //
+        // List<int> sorted = new List<int>();
+        // for (int i = 0; i < buckets.Count; i++)
+        // {
+        //     sorted.AddRange(buckets[i]);
+        // }
+        //
+        // int longestConsecutiveLength = 1;
+        // int currentConsecutiveLength = 1;
+        // for (int i = 0; i < sorted.Count; i++)
+        // {
+        //     if (i == 0 || sorted[i] == sorted[i - 1]) continue;
+        //     if (sorted[i] - 1 == sorted[i - 1])
+        //     {
+        //         currentConsecutiveLength++;
+        //     }
+        //     if (longestConsecutiveLength < currentConsecutiveLength)
+        //     {
+        //         longestConsecutiveLength = currentConsecutiveLength;
+        //         continue;
+        //     }
+        //     currentConsecutiveLength = 1;
+        // }
+        //
+        // return longestConsecutiveLength;
+    }
 }
