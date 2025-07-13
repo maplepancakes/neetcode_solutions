@@ -24,4 +24,5 @@ TwoPointers twoPointers = new TwoPointers();
 //     new char[] {'.','.','.','.','8','.','.','7','9'}
 // });
 // arraysAndHashing.LongestConsecutive(new int[] { 0, 3, 2, 5, 4, 6, 1, 1 });
-twoPointers.IsPalindrome("Was it a car or a cat I saw?");
+// twoPointers.IsPalindrome("Was it a car or a cat I saw?");
+twoPointers.TwoSum(new int[] { 3, 6, 6, 7 }, 12);

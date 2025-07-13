@@ -39,4 +39,36 @@ public class TwoPointers
 
         return true;
     }
+    
+    // Expected time complexity = O(n)
+    // Expected space complexity = O(1)
+    public int[] TwoSum(int[] numbers, int target)
+    {
+        // 1st Attempt
+        // Actual time complexity = O(n*n) -> Brute force method that revisits elements to find the total that matches up to the target
+        // Actual space complexity = O(1) -> Pointers and fixed output array
+        // int p1 = 0; // Start pointer
+        // int p2 = p1 + 1; // End pointer;
+        // int[] result = new int[2];
+        // while (p1 < numbers.Length)
+        // {
+        //     if (numbers[p1] + numbers[p2] == target)
+        //     {
+        //         result[0] = p1 + 1;
+        //         result[1] = p2 + 1;
+        //         return result;
+        //     }
+        //
+        //     if (p2 < numbers.Length - 1) // Ensures max value of p2 is the last index of the input array
+        //     {
+        //         p2++;
+        //         continue;
+        //     }
+        //     
+        //     p1++;
+        //     p2 = p1 + 1;
+        // }
+        //
+        // return result;
+    }
 }
