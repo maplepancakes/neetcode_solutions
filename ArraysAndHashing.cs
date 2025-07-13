@@ -346,5 +346,29 @@ public class ArraysAndHashing
         // }
         //
         // return longestConsecutiveLength;
+        
+        // Attempt 2
+        // Actual time complexity = O(n) -> Each element in the hashset is only ever visited once
+        // Actual space complexity = O(n) -> input array is O(n), hashset is O(n)
+        HashSet<int> uniqueNums = nums.ToHashSet();
+        int longestConsecutiveSequence = 0; // Longest consecutive sequence always starts at 0, as there may be edge cases where an empty input array is passed
+        foreach (int num in uniqueNums)
+        {
+            if (uniqueNums.Contains(num - 1)) continue; // If hashset contains num - 1, that means there is a neighboring number before num (e.g. current loop num is 9, but there contains an 8), therefore num cannot be a starting sequence
+            int currentConsecutiveSequence = 1;
+            int currentNumber = num;
+            while (uniqueNums.Contains(currentNumber + 1)) // num + 1 to find the next neighboring number (e.g. 2 is starting sequence, then is there 2+1=3, 3+1=4, 4+1=5,... in the hashset? Keep iterating until all neighboring numbers on the right are exhausted)
+            {
+                currentConsecutiveSequence++;
+                currentNumber++;
+            }
+
+            if (longestConsecutiveSequence < currentConsecutiveSequence) // Prevents longest consecutive sequence from being overridden by a shorter consecutive sequence
+            {
+                longestConsecutiveSequence = currentConsecutiveSequence;
+            }
+        }
+
+        return longestConsecutiveSequence;
     }
 }
