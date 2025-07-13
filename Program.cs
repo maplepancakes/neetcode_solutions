@@ -3,6 +3,7 @@
 using Neetcode_Practice;
 
 ArraysAndHashing arraysAndHashing = new ArraysAndHashing();
+TwoPointers twoPointers = new TwoPointers();
 
 // arraysAndHashing.IsAnagram("racecar", "carrace");
 // arraysAndHashing.TwoSum([2, 5, 6, 3, 1], 8);
@@ -22,4 +23,5 @@ ArraysAndHashing arraysAndHashing = new ArraysAndHashing();
 //     new char[] {'.','.','.','4','1','9','.','.','8'},
 //     new char[] {'.','.','.','.','8','.','.','7','9'}
 // });
-arraysAndHashing.LongestConsecutive(new int[] { 0, 3, 2, 5, 4, 6, 1, 1 });
+// arraysAndHashing.LongestConsecutive(new int[] { 0, 3, 2, 5, 4, 6, 1, 1 });
+twoPointers.IsPalindrome("Was it a car or a cat I saw?");
