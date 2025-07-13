@@ -70,5 +70,32 @@ public class TwoPointers
         // }
         //
         // return result;
+
+        // 2nd Attempt
+        // Actual time complexity = O(n) -> Each element in the input array is only visited once
+        // Actual space complexity = O(1) -> Pointers and fixed size array
+        int p1 = 0; // Start pointer
+        int p2 = numbers.Length - 1; // End pointer
+        int[] result = new int[2];
+        while (true)
+        {
+            int total = numbers[p1] + numbers[p2];
+            if (total == target)
+            {
+                result[0] = p1 + 1;
+                result[1] = p2 + 1;
+                return result;
+            }
+
+            if (total > target) // Largest number is too big, decrement end pointer to find the next largest number;
+            {
+                p2--;
+                continue;
+            }
+            if (total < target) // Smallest number is too small, increment start pointer to find the next smallest number;
+            {
+                p1++;
+            }
+        }
     }
 }
