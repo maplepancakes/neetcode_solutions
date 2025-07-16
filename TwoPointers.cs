@@ -98,4 +98,47 @@ public class TwoPointers
             }
         }
     }
+    
+    // Expected time complexity = O(n*n)
+    // Expected space complexity = O(1)
+    public List<List<int>> ThreeSum(int[] nums)
+    {
+        // Attempt 1
+        // Actual time complexity = O(n*n) -> revisiting numbers in the array for each increment of i
+        // Actual space complexity = O(1) -> Sort(), a, p1, p2, b, c; output does not count
+        List<List<int>> result = new List<List<int>>();
+        Array.Sort(nums);
+        for (int i = 0; i < nums.Length - 2; i++) // nums.Length - 2 because you will always need at least 2 numbers after the current index to make up 3 digits
+        {
+            int a = nums[i];
+            if (i != 0 && a == nums[i - 1]) continue;
+
+            int p1 = i + 1;
+            int p2 = nums.Length - 1;
+            while (p1 < p2)
+            {
+                int b = nums[p1];
+                int c = nums[p2];
+                
+                if (b + c < -a || (p1 != i + 1 && b == nums[p1 - 1]))
+                {
+                    p1++;
+                    continue;
+                }
+                if (b + c > -a || (p2 != nums.Length - 1 && c == nums[p2 + 1]))
+                {
+                    p2--;
+                    continue;
+                }
+                if (b + c == -a) // a + b + c = 0, therefore b + c = -a
+                {
+                    result.Add(new List<int>() {a, b, c});
+                    p1++;
+                    p2--;
+                }
+            }
+        }
+
+        return result;
+    }
 }
