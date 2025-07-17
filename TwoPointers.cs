@@ -141,4 +141,29 @@ public class TwoPointers
 
         return result;
     }
+    
+    // Expected time complexity = O(n)
+    // Expected space complexity = O(1)
+    public int MaxArea(int[] heights)
+    {
+        // Attempt 1
+        // Actual time complexity = O(n) -> Each element visited only once
+        // Actual space complexity = O(1)
+        int x1 = 0;
+        int x2 = heights.Length - 1;
+
+        int maxArea = 0;
+        while (x1 < x2)
+        {
+            int[] height = new int[] { heights[x1], heights[x2] };
+            int area = (x2 - x1) * height.Min();
+
+            if (area > maxArea) maxArea = area;
+
+            if (heights[x1] > heights[x2]) x2--;
+            else x1++;
+        }
+
+        return maxArea;
+    }
 }

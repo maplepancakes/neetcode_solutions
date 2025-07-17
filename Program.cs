@@ -26,4 +26,5 @@ TwoPointers twoPointers = new TwoPointers();
 // arraysAndHashing.LongestConsecutive(new int[] { 0, 3, 2, 5, 4, 6, 1, 1 });
 // twoPointers.IsPalindrome("Was it a car or a cat I saw?");
 // twoPointers.TwoSum(new int[] { 3, 6, 6, 7 }, 12);
-twoPointers.ThreeSum(new int[] { -2, -2, 0, 2, 2 });
+// twoPointers.ThreeSum(new int[] { -2, -2, 0, 2, 2 });
+twoPointers.MaxArea(new int[] { 1, 7, 2, 5, 4, 7, 3, 6 });
