@@ -4,6 +4,8 @@ using Neetcode_Practice;
 
 ArraysAndHashing arraysAndHashing = new ArraysAndHashing();
 TwoPointers twoPointers = new TwoPointers();
+Stacks stacks = new Stacks();
+MinStack minStack = new MinStack();
 
 // arraysAndHashing.IsAnagram("racecar", "carrace");
 // arraysAndHashing.TwoSum([2, 5, 6, 3, 1], 8);
@@ -27,4 +29,4 @@ TwoPointers twoPointers = new TwoPointers();
 // twoPointers.IsPalindrome("Was it a car or a cat I saw?");
 // twoPointers.TwoSum(new int[] { 3, 6, 6, 7 }, 12);
 // twoPointers.ThreeSum(new int[] { -2, -2, 0, 2, 2 });
-twoPointers.MaxArea(new int[] { 1, 7, 2, 5, 4, 7, 3, 6 });
+// twoPointers.MaxArea(new int[] { 1, 7, 2, 5, 4, 7, 3, 6 });
