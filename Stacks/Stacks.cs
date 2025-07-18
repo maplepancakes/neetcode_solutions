@@ -41,4 +41,43 @@ public class Stacks
 
         return true;
     }
+    
+    // Expected time complexity = O(n)
+    // Actual time complexity = O(n)
+    public int EvalRPN(string[] tokens)
+    {
+        // Attempt 1
+        // Actual time complexity = O(n) -> elements in input array only visited once, other methods like Pop(), Push() are all O(1)
+        // Actual space complexity = O(n) -> stack can store n operands
+        Stack<int> operands = new Stack<int>();
+        for (int i = 0; i < tokens.Length; i++)
+        {
+            if (tokens[i] != "+" && tokens[i] != "-" && tokens[i] != "*" && tokens[i] != "/")
+            {
+                operands.Push(int.Parse(tokens[i]));
+                continue;
+            }
+            
+            int rightOperand = operands.Pop();
+            int leftOperand = operands.Pop();
+            
+            switch (tokens[i])
+            {
+                case "+":
+                    operands.Push(leftOperand + rightOperand);
+                    break;
+                case "-":
+                    operands.Push(leftOperand - rightOperand);
+                    break;
+                case "*":
+                    operands.Push(leftOperand * rightOperand);
+                    break;
+                case "/":
+                    operands.Push(leftOperand / rightOperand);
+                    break;
+            }
+        }
+
+        return operands.Pop();
+    }
 }
