@@ -6,6 +6,7 @@ ArraysAndHashing arraysAndHashing = new ArraysAndHashing();
 TwoPointers twoPointers = new TwoPointers();
 Stacks stacks = new Stacks();
 MinStack minStack = new MinStack();
+BinarySearch binarySearch = new BinarySearch();
 
 // arraysAndHashing.IsAnagram("racecar", "carrace");
 // arraysAndHashing.TwoSum([2, 5, 6, 3, 1], 8);
@@ -32,4 +33,5 @@ MinStack minStack = new MinStack();
 // twoPointers.MaxArea(new int[] { 1, 7, 2, 5, 4, 7, 3, 6 });
 // stacks.EvalRPN(new String[] {"4", "13", "5", "/", "+"});
 // stacks.DailyTemperatures([30, 38, 30, 36, 35, 40, 28]);
-stacks.CarFleet(10, [6, 8], [3, 2]);
+// stacks.CarFleet(10, [6, 8], [3, 2]);
+binarySearch.Search([2,5], 0);
