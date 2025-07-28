@@ -112,4 +112,36 @@ public class Stacks
 
         return result;
     }
+    
+    // Expected time complexity = O(n log n)
+    // Expected space complexity = O(n)
+    public int CarFleet(int target, int[] position, int[] speed)
+    {
+        // Attempt 1
+        // Expected time complexity = O(n log n) -> Sorting of list
+        // Expected space complexity = O(n) -> cars, fleets
+        List<int[]> cars = new List<int[]>();
+        for (int i = 0; i < position.Length; i++)
+        {
+            cars.Add(new int[] {position[i], speed[i]});
+        }
+        cars.Sort((a, b) => b[0].CompareTo(a[0])); // O (n log n)
+
+        Stack<double> fleets = new Stack<double>();
+        for (int i = 0; i < cars.Count; i++)
+        {
+            double time = (target - cars[i][0]) * 1.0d / cars[i][1]; // time = (target - position) / speed
+
+            // If a car behind is faster than the car in front, the car behind will eventually catch up to the car in front and match its speed.
+            // Therefore, the time taken to travel to the target destination for the car behind will always be the same as the car in front.
+            // Hence, there is no need to add the time for the car behind.
+            if (fleets.Count > 0 && time <= fleets.Peek())
+            {
+                continue;
+            }
+            fleets.Push(time);
+        }
+
+        return fleets.Count;
+    }
 }
