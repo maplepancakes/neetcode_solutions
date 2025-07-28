@@ -43,7 +43,7 @@ public class Stacks
     }
     
     // Expected time complexity = O(n)
-    // Actual time complexity = O(n)
+    // Expected space complexity = O(n)
     public int EvalRPN(string[] tokens)
     {
         // Attempt 1
@@ -79,5 +79,37 @@ public class Stacks
         }
 
         return operands.Pop();
+    }
+    
+    // Expected time complexity = O(n)
+    // Expected space complexity = O(n)
+    public int[] DailyTemperatures(int[] temperatures)
+    {
+        // Attempt 1
+        // Actual time complexity = O(n) -> elements in input array only visited once, other methods like Pop(), Push() are all O(1)
+        // Actual space complexity = O(n) -> stack can store n key-value pairs
+        int[] result = new int[temperatures.Length];
+        Stack<KeyValuePair<int, int>> stack = new Stack<KeyValuePair<int, int>>();
+
+        for (int i = temperatures.Length - 1; i >= 0; i--)
+        {
+            while (stack.Count != 0 && temperatures[i] >= stack.Peek().Key)
+            {
+                stack.Pop();
+            }
+
+            if (stack.Count == 0)
+            {
+                result[i] = 0;
+            }
+            else
+            {
+                result[i] = stack.Peek().Value - i;   
+            }
+            
+            stack.Push(new KeyValuePair<int, int>(temperatures[i], i));
+        }
+
+        return result;
     }
 }

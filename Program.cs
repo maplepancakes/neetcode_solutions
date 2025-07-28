@@ -30,4 +30,5 @@ MinStack minStack = new MinStack();
 // twoPointers.TwoSum(new int[] { 3, 6, 6, 7 }, 12);
 // twoPointers.ThreeSum(new int[] { -2, -2, 0, 2, 2 });
 // twoPointers.MaxArea(new int[] { 1, 7, 2, 5, 4, 7, 3, 6 });
-stacks.EvalRPN(new String[] {"4", "13", "5", "/", "+"});
+// stacks.EvalRPN(new String[] {"4", "13", "5", "/", "+"});
+stacks.DailyTemperatures([30, 38, 30, 36, 35, 40, 28]);
