@@ -125,10 +125,13 @@ public class Stacks
         {
             cars.Add(new int[] {position[i], speed[i]});
         }
-        cars.Sort((a, b) => b[0].CompareTo(a[0])); // O (n log n)
+        
+        // O (n log n)
+        // Sorted in ascending order so the position is representative of where the cars are in a straight line
+        cars.Sort((a, b) => a[0].CompareTo(b[0])); 
 
         Stack<double> fleets = new Stack<double>();
-        for (int i = 0; i < cars.Count; i++)
+        for (int i = cars.Count - 1; i >= 0; i--)
         {
             double time = (target - cars[i][0]) * 1.0d / cars[i][1]; // time = (target - position) / speed
 
