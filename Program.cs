@@ -34,4 +34,5 @@ BinarySearch binarySearch = new BinarySearch();
 // stacks.EvalRPN(new String[] {"4", "13", "5", "/", "+"});
 // stacks.DailyTemperatures([30, 38, 30, 36, 35, 40, 28]);
 // stacks.CarFleet(10, [6, 8], [3, 2]);
-binarySearch.Search([2,5], 0);
+// binarySearch.Search([2, 5], 0);
+binarySearch.SearchMatrix([[1]], 0);

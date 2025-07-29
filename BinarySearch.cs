@@ -36,4 +36,73 @@ public class BinarySearch
 
         return -1; // No index found with target value
     }
+    
+    // Expected time complexity = O(log m * n)
+    // Expected space complexity = O(1)
+    public bool SearchMatrix(int[][] matrix, int target)
+    {
+        // Actual time complexity = O(log m * n) -> Binary search on rows, then binary search on columns after the target row has been identified
+        // Actual space complexity = O(1) -> All initialized fields are O(1)
+        int top = 0;
+        int bottom = matrix.Length - 1;
+        int lastColumnIndex = matrix[0].Length - 1;
+
+        int left = 0;
+        int right = matrix[0].Length - 1;
+        int rowContainingPossibleTargetValue = -1;
+
+        // Binary search for row containing possible target value
+        while (top <= bottom)
+        {
+            int row = (top + bottom) / 2;
+            int firstRowValue = matrix[row][0];
+            int lastRowValue = matrix[row][lastColumnIndex];
+
+            if (firstRowValue == target || lastRowValue == target)
+            {
+                return true;
+            }
+            if (firstRowValue <= target && lastRowValue >= target)
+            {
+                rowContainingPossibleTargetValue = row;
+                break;
+            }
+            if (firstRowValue > target)
+            {
+                bottom = row - 1;
+                continue;
+            }
+            if (firstRowValue < target)
+            {
+                top = row + 1;
+            }
+        }
+
+        // Prevents binary search on column if no possible row with target value is found
+        if (rowContainingPossibleTargetValue == -1) return false;
+
+        // Once the possible row is found, binary search on the columns of that row to find the target value
+        while (left <= right)
+        {
+            int column = (left + right) / 2;
+            int columnValue = matrix[rowContainingPossibleTargetValue][column];
+
+            if (columnValue == target)
+            {
+                return true;
+            }
+            if (columnValue > target)
+            {
+                right = column - 1;
+                continue;
+            }
+
+            if (columnValue < target)
+            {
+                left = column + 1;
+            }
+        }
+
+        return false;
+    }
 }
