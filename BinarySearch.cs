@@ -105,4 +105,50 @@ public class BinarySearch
 
         return false;
     }
+    
+    // Expected time complexity = O(log n)
+    // Expected space complexity = O(1)
+    public int FindMin(int[] nums)
+    {
+        // Attempt 1 
+        // Actual time complexity = O(log n) -> Binary search
+        // Actual space complexity = O(1) -> No extra space used
+        if (nums.Length == 1 || nums[0] < nums[nums.Length - 1]) return nums[0];
+        if (nums.Length == 2)
+        {
+            if (nums[0] > nums[1]) return nums[1];
+            return nums[0];
+        }
+
+        int min = 0;
+        int left = 0;
+        int right = nums.Length - 1;
+        while (left <= right)
+        {
+            int mid = (left + right) / 2;
+
+            if (nums[mid] > nums[mid + 1])
+            {
+                min = nums[mid + 1];
+                break;
+            }
+            if (nums[mid] < nums[mid - 1])
+            {
+                min = nums[mid];
+                break;
+            }
+
+            if (nums[mid] < nums[left])
+            {
+                right = mid - 1;
+                continue;
+            }
+            if (nums[mid] > nums[left])
+            {
+                left = mid + 1;
+            }
+        }
+
+        return min;
+    }
 }
